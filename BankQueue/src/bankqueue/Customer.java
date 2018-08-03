@@ -5,7 +5,7 @@
  */
 package bankqueue;
 public class Customer {
-    String name;
+    private String name;
     Customer(){
         name = null;
     }

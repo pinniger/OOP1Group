@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Group 5 - Clair, Johnathan, Christopher
+ * PP 13.5
+ * Group Assignment
  */
 package bankqueue;
 import java.util.Random;
@@ -20,14 +20,14 @@ public class BankQueue {
             
             if(option == 0 || line.getSize() == 0)
             {
-                System.out.println("Enter a customer name and number ot queue");
+                System.out.println("Enter a name to add a customer to the line");
                 String name = input.next();
                 
                 line.enqueue(new Customer(name));
                 System.out.println(name + " got in line at position " + line.getSize());
             } else {
                 Customer cust = line.dequeue();
-                System.out.println(cust.name + " has finished at the teller, the line size is now " + line.getSize());
+                System.out.println(cust.getName() + " has finished at the teller, the line size is now " + line.getSize());
             }
         }
     }
