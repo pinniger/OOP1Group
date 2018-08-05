@@ -13,7 +13,7 @@ public class BankQueue
     private static final int CYCLES = 10;
     
     public static void main(String[] args) {
-       int numCust, custServced;
+       int numCust, custServiced;
        Customer person;
        
        Random gen = new Random();
@@ -31,9 +31,9 @@ public class BankQueue
                 System.out.println(person + " joins the line");
             }
             
-            custServced = gen.nextInt(MAX_CUST_SERVICED);
+            custServiced = gen.nextInt(MAX_CUST_SERVICED);
             
-            for (int j = 0; j < custServced; j++) 
+            for (int j = 0; j < custServiced; j++) 
             {
                 if (line.isEmpty()) {
                     System.out.println("Teller waiting");
