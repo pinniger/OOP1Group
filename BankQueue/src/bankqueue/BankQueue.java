@@ -5,31 +5,48 @@
  */
 package bankqueue;
 import java.util.Random;
-import java.util.Scanner;
 
-public class BankQueue {
-
+public class BankQueue 
+{
+    private static final int MAX_NUM_CUSTOMERS = 5;
+    private static final int MAX_CUST_SERVICED = 4;
+    private static final int CYCLES = 10;
+    
     public static void main(String[] args) {
-        Random random = new Random();
-        Scanner input = new Scanner(System.in);
-        int maxSize = 8;
-        BankLine line = new BankLine(8);
-        
-        for (int i = 0; i < maxSize; i++) {
-            int option = random.nextInt(2);
+       int numCust, custServced;
+       Customer person;
+       
+       Random gen = new Random();
+       int custCount = 0;
+       BankLine line = new BankLine();
+       
+        for (int i = 0; i < CYCLES; i++) 
+        {
+            numCust = gen.nextInt(MAX_NUM_CUSTOMERS);
             
-            if(option == 0 || line.getSize() == 0)
+            for (int j = 0; j < numCust; j++) 
             {
-                System.out.println("Enter a name to add a customer to the line");
-                String name = input.next();
-                
-                line.enqueue(new Customer(name));
-                System.out.println(name + " got in line at position " + line.getSize());
-            } else {
-                Customer cust = line.dequeue();
-                System.out.println(cust.getName() + " has finished at the teller, the line size is now " + line.getSize());
+                person = new Customer(custCount++);
+                line.addCustomer(person);
+                System.out.println(person + " joins the line");
+            }
+            
+            custServced = gen.nextInt(MAX_CUST_SERVICED);
+            
+            for (int j = 0; j < custServced; j++) 
+            {
+                if (line.isEmpty()) {
+                    System.out.println("Teller waiting");
+                } else {
+                    System.out.println(line.nextCustomer() + " is being serviced");
+                }
             }
         }
+       
+        System.out.println("Bank closing...");
+        while(!line.isEmpty())
+            System.out.println(line.nextCustomer() + " is being serviced");
+       
     }
     
 }

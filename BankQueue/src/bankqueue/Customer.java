@@ -5,16 +5,13 @@
  */
 package bankqueue;
 public class Customer {
-    private String name;
-    Customer(){
-        name = null;
-    }
+    private int id;
     
-    Customer(String name){
-        this.name = name;
+    Customer(int number){
+        this.id = number;
     }
 
-    String getName() {
-        return this.name;
+    public String toString() {
+        return "Customer " + id;
     }
 }
